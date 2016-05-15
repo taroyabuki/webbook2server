@@ -6,7 +6,7 @@
 
 この書籍は，サーバ構築技術とアプリケーション構築技術を学べるものになっている。ここでは，これらをなるべく別々に学ぶ方法を紹介する。
 
-サーバ構築は，Vagrantで管理する仮想マシンのプロビジョニングによって学ぶ。詳しくは，Vagrantの概要を別に学んだ後で，以下の第2章についてのメモと，[Gitリポジトリ](https://github.com/taroyabuki/webbook2server)の`Vagrantfile`と`provisioning.sh`を読んでほしい。2016年5月時点ではUbuntu 16.04での動作に不明な部分があるため，Ubuntu 14.04（32-bit）を使っている。32-bit版を使うのは，多くの環境で使えるようにしたいためである。
+サーバ構築は，Vagrantで管理する仮想マシンのプロビジョニングによって学ぶ。詳しくは，Vagrantの概要を別に学んだ後で，以下の第2章についてのメモと，`Vagrantfile`と`provisioning.sh`を読んでほしい。2016年5月時点ではUbuntu 16.04での動作に不明な部分があるため，Ubuntu 14.04（32-bit）を使っている。32-bit版を使うのは，多くの環境で使えるようにしたいためである。
 
 アプリケーション構築技術は，本書の3章以降で学ぶ。2章の準備を済ませた後で，この文書も参考にしながら本書の3章以降を実践してほしい。
 
@@ -108,7 +108,12 @@ Apache HTTP Serverのドキュメントルートは以下のとおり。
 * ホスト側：Windowsなら`c:/vagrant/webbook2server/html`，Mac OS Xなら`$home/webbook2server/html`
 * ゲスト側：`/var/www/html`
 
-PHPのエラーに関する`php.ini`の設定は変更済みである。（`provision.sh`を参照）
+この他に，次のフォルダもホストとゲストで共有している。
+
+* ホスト側：Windowsなら`c:/vagrant/webbook2server`，Mac OS Xなら`$home/webbook2server`
+* ゲスト側：`/vagrant`
+
+PHPのエラーに関する`php.ini`の設定は変更済み。
 
 ### 2.4の代わり：ウェブブラウザと統合開発環境
 
@@ -116,9 +121,9 @@ PHPのエラーに関する`php.ini`の設定は変更済みである。（`prov
 
 ブラウザは，FirefoxやChrome，Internet Explorer，Edge，Safariなど，何でもよい。
 
-#### 統合開発環境
+#### 統合開発環境（NetBeans）
 
-統合開発環境はNetBeansを使う。[https://netbeans.org/downloads/?pagelang=ja](https://netbeans.org/downloads/?pagelang=ja)から「PHP」または「すべて」をダウンロードし，インストールする。（JDKが必要）
+[https://netbeans.org/downloads/?pagelang=ja](https://netbeans.org/downloads/?pagelang=ja)から「PHP」または「すべて」をダウンロードし，インストールする。（JDKが必要）
 
 ### 2.5
 
@@ -142,7 +147,7 @@ Firebugのインストールは不要。
 
 ### 4.1
 
-NetBeansのプロジェクト`phpweb`内に`alert.html`を作り，ブラウザで[http://localhost/phpweb/alert.html](http://localhost/phpweb/alert.html)開いて確認する。
+NetBeansのプロジェクト`phpweb`内に`alert.html`を作り，ブラウザで[http://localhost/phpweb/alert.html](http://localhost/phpweb/alert.html)を開いて確認する。
 
 ホストとゲストのフォルダは同期しているから，ゲスト側で次のようにしてファイルを作ることもできる。
 

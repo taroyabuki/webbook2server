@@ -17,7 +17,7 @@
 #### Windows 10
 
 1. chocolateyをインストールする。
-1. コマンドプロンプト（管理者）を立ち上げる。（スタートボタンを右クリック）
+1. コマンドプロンプト（管理者）を起動する。（スタートボタンを右クリック）
 1. VagrantとVirtualBox，JDKをインストールする（すでにインストールされている場合は，以下のコマンドからそれを除くこと。一度アンインストールしてもよい）。（`rsync`は`ssh`クライアントのため）
 
 ```
@@ -26,7 +26,7 @@ cinst -y git rsync vagrant virtualbox jdk
 
 参考：[Chocolateyを使った環境構築の時のメモ](http://qiita.com/konta220/items/95b40b4647a737cb51aa)
 
-コマンドプロンプトのタイトルバーを右クリックし，プロパティの設定で「簡易編集モード」を有効にしておく（範囲選択し`Enter`キーでコピー，右クリックで貼り付けができるようになる）。
+（管理者でない）コマンドプロンプトを起動する。コマンドプロンプトのタイトルバーを右クリックし，プロパティの設定で「簡易編集モード」を有効にしておく（範囲選択し`Enter`キーでコピー，右クリックで貼り付けができるようになる）。
 
 Vagrantのためのフォルダ`c:/vagrant`を作る。（別の場所でもよいが，以下の説明はこれを前提にしている。）
 
@@ -85,10 +85,10 @@ vagrant up
 
 #### 接続と切断
 
-ホストにいるときのプロンプトは`C:\vagrant\ubuntu>`。そこで`vagrant ssh`として，ゲストに接続する。
+ホストにいるときのプロンプトは`C:\vagrant\webbook2server>`。そこで`vagrant ssh`として，ゲストに接続する。
 
 ```
-C:\vagrant\ubuntu>vagrant ssh
+C:\vagrant\webbook2server>vagrant ssh
 ```
 
 ゲストにいるときのプロンプトは`vagrant@vagrant-ubuntu-trusty-32:~$ `。そこで`exit`として，切断する。

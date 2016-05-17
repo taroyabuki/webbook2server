@@ -36,4 +36,4 @@ service apache2 restart
 
 #Other
 apt-get -y install jq unzip nkf
-apt-get autoremove
+apt-get -y autoremove

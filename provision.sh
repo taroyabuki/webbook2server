@@ -22,6 +22,7 @@ echo "phpmyadmin phpmyadmin/dbconfig-install boolean true" | debconf-set-selecti
 echo "phpmyadmin phpmyadmin/mysql/admin-pass password $MYSQL_ROOT_PASS" | debconf-set-selections
 echo "phpmyadmin phpmyadmin/mysql/app-pass password ''" | debconf-set-selections
 apt-get -y install phpmyadmin
+sudo php5enmod mcrypt
 
 #display PHP errors
 sed -i -e 's/display_errors = Off/display_errors = On/' /etc/php5/apache2/php.ini
@@ -35,3 +36,4 @@ service apache2 restart
 
 #Other
 apt-get -y install jq unzip nkf
+apt-get autoremove

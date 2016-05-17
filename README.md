@@ -1,12 +1,12 @@
 # VagrantでWebアプリケーション構築入門
 
-矢吹太朗『Webアプリケーション構築入門』（森北出版, 第2版, 2011）のためのPHP開発環境をVagrantで用意する方法を紹介する。（Javaについては割愛）
+矢吹太朗『Webアプリケーション構築入門』（森北出版, 第2版, 2011）のためのPHP開発環境をVagrantで用意する方法を紹介する。
 
 参考：[書籍のサポートサイト](https://github.com/taroyabuki/webbook2)
 
 この書籍は，サーバ構築技術とアプリケーション構築技術を学べるものになっている。ここでは，書籍の方法を少し改良して，これらをなるべく別々に学ぶ方法を紹介する。
 
-サーバ構築技術は，Vagrantで管理する仮想マシンのプロビジョニングによって学ぶ。詳しくは，Vagrantの概要を別に学んだ後で，以下の第2章についてのメモと，`Vagrantfile`と`provisioning.sh`を読んでほしい。2016年5月時点ではUbuntu 16.04での動作に不明な部分があるため，Ubuntu 14.04（32-bit）を使っている。32-bit版を使うのは，多くの環境で使えるようにしたいためである。
+サーバ構築技術は，Vagrantで管理する仮想マシンのプロビジョニングによって学ぶ（Javaのサーバは例外で，ホスト側で動作する）。詳しくは，Vagrantの概要を別に学んだ後で，以下の第2章についてのメモと，`Vagrantfile`と`provisioning.sh`を読んでほしい。仮想マシンはUbuntu 14.04（32-bit）を使う。Ubuntu 16.04でないのは、2016年5月時点ではUbuntu 16.04の動作に不明な部分があるため，32-bit版を使うのは，多くの環境で使えるようにしたいためである。
 
 アプリケーション構築技術は，本書の3章以降で学ぶ。以下に記述する2章の準備を済ませた後で，3章以降を実践してほしい。
 
@@ -16,7 +16,7 @@
 
 #### Windows 10
 
-1. chocolateyをインストールする。
+1. [Chocolatey](https://chocolatey.org/)をインストールする。
 1. コマンドプロンプト（管理者）を起動する。（スタートボタンを右クリック）
 1. VagrantとVirtualBox，JDKをインストールする（すでにインストールされている場合は，以下のコマンドからそれを除くこと。一度アンインストールしてもよい）。（`rsync`は`ssh`クライアントのため）
 
@@ -127,6 +127,32 @@ PHPのエラーに関する`php.ini`の設定は変更済み。
 
 ### 2.5
 
+#### 2.5.1
+
+Javaのプロジェクトは「Maven」の「Webアプリケーション」を使う（プロジェクト名を`JavaWeb`にすれば，あとはデフォルトでよい）。
+
+![](https://raw.githubusercontent.com/taroyabuki/webbook2/master/update/maven.png)
+
+以下のライブラリをここで用意する。
+
+* Apache Commons Lang（書籍では6.3.1項でインストールする）
+* MySQL Connector/J（書籍では8.2.2項でインストールする）
+
+そのために，「プロジェクト・ファイル」の中にある`pom.xml`の`dependencies`要素の中に以下を追記する。（よくわからなければ，ここで配布している`pom.xml`で全体を置き換えてもかまわない。ちなみに，これらの記述は[http://mvnrepository.com/](http://mvnrepository.com/)で見つけられる。）
+
+```xml
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>6.0.2</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-lang3</artifactId>
+    <version>3.4</version>
+</dependency>
+```
+
 #### 2.5.2
 
 プロジェクトのソースフォルダは，Windowsなら`C:\vagrant\webbook2server\html\phpweb`，Mac OS Xなら`$home/webbook2server/html/phpweb`とする。
@@ -165,6 +191,8 @@ wget https://raw.githubusercontent.com/taroyabuki/webbook2/master/src/04/alert.h
 
 ## 第6章
 
+Apache Commons Langのインストールは不要（上述のとおり`pom.xml`を修正していれば）
+
 参照：[サポートサイトの第6章部分](https://github.com/taroyabuki/webbook2/tree/master/src/06)
 
 ## 第7章
@@ -175,6 +203,8 @@ wget https://raw.githubusercontent.com/taroyabuki/webbook2/master/src/04/alert.h
 参照：[サポートサイトの第7章部分](https://github.com/taroyabuki/webbook2/tree/master/src/07)
 
 ## 第8章
+
+MySQL Connector/Jのインストールは不要（上述のとおり`pom.xml`を修正していれば）
 
 参照：[サポートサイトの第8章部分](https://github.com/taroyabuki/webbook2/tree/master/src/08)
 

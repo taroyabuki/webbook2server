@@ -129,7 +129,7 @@ PHPのエラーに関する`php.ini`の設定は変更済み。
 
 #### 2.5.1
 
-Javaのプロジェクトは「Maven」の「Webアプリケーション」を使う（プロジェクト名を`JavaWeb`にすれば，あとはデフォルトでよい）。
+Javaのプロジェクトは「Maven」の「Webアプリケーション」を使う（プロジェクト名を`javaweb`にすれば，あとはデフォルトでよい）。
 
 ![](https://raw.githubusercontent.com/taroyabuki/webbook2/master/update/maven.png)
 

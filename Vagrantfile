@@ -24,8 +24,27 @@ Vagrant.configure(2) do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # config.vm.network "forwarded_port", guest: 80, host: 8080
-  config.vm.network "forwarded_port", guest: 80, host: 80
-  config.vm.network "forwarded_port", guest: 3306, host: 3306
+  if RbConfig::CONFIG['host_os'] =~ /darwin/i then
+    config.vm.network "forwarded_port", guest: 80, host: 10080
+    config.vm.network "forwarded_port", guest: 3306, host: 13306
+
+    config.trigger.after [:provision, :up, :reload] do
+      system('echo "
+        rdr pass on lo0 inet proto tcp from any to 127.0.0.1 port 80 -> 127.0.0.1 port 10080
+        rdr pass on lo0 inet proto tcp from any to 127.0.0.1 port 3306 -> 127.0.0.1 port 13306
+        " | sudo pfctl -ef - > /dev/null 2>&1')
+      system('echo "set packet filter 127.0.0.1:80 -> 127.0.0.1:10080"')
+      system('echo "set packet filter 127.0.0.1:3306 -> 127.0.0.1:13306"')
+    end
+
+    config.trigger.after [:halt, :destroy] do
+      system("sudo pfctl -df /etc/pf.conf > /dev/null 2>&1")
+      system('echo "reset packet filter"')
+    end
+  else
+    config.vm.network "forwarded_port", guest: 80, host: 80
+    config.vm.network "forwarded_port", guest: 3306, host: 3306
+  end
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -75,6 +94,6 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", path: "provision.sh"
 
   if Vagrant.has_plugin?("vagrant-cachier")
-    config.cache.scope = :box 
+    config.cache.scope = :box
   end
 end

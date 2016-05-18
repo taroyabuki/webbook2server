@@ -17,7 +17,7 @@
 #### Windows 10
 
 1. [Chocolatey](https://chocolatey.org/)をインストールする。
-1. コマンドプロンプト（管理者）を起動する。（スタートボタンを右クリック）
+1. コマンドプロンプト（管理者）を再起動する。（スタートボタンを右クリック）
 1. VagrantとVirtualBox，JDKをインストールする（すでにインストールされている場合は，以下のコマンドからそれを除くこと。一度アンインストールしてもよい）。（`rsync`は`ssh`クライアントのため）
 
 ```
@@ -28,7 +28,7 @@ cinst -y git rsync vagrant virtualbox jdk
 
 （管理者でない）コマンドプロンプトを起動する。コマンドプロンプトのタイトルバーを右クリックし，プロパティの設定で「簡易編集モード」を有効にしておく（範囲選択し`Enter`キーでコピー，右クリックで貼り付けができるようになる）。
 
-Vagrantのためのフォルダ`c:/vagrant`を作る。（別の場所でもよいが，以下の説明はこれを前提にしている。）
+Vagrantのためのフォルダ`c:\vagrant`を作る。（別の場所でもよいが，以下の説明はこれを前提にしている。）
 
 ```
 c:
@@ -38,11 +38,23 @@ mkdir Vagrant
 
 #### Mac OS X
 
-VagrantとVirtualBox，JDKをインストールする。（Homebrewを使うのが簡単）
+1. 端末を起動する。
+1. Homebrewをインストールする。
+1. Homebrew Caskをインストールする。
+1. JDK，VirtualBox，Vagrantをインストールする。
 
-参考：[Homebrew CaskでVagrantの環境構築メモ]()
+```bash
+homebrew cask install java virtualbox vagrant
+```
 
-Vagrantのためのフォルダは`$home`でいいだろう。
+参考：[Homebrew CaskでVagrantの環境構築メモ](http://qiita.com/moomoo-ya/items/30f9ffdb7dd34caf9ec0)
+
+Vagrantのためのフォルダ`~/vagrant`を作る。（別の場所でもよいが，以下の説明はこれを前提にしている。）
+
+```
+cd
+mkdir Vagrant
+```
 
 ### 2.2の代わり（その2）：仮想マシン
 
@@ -54,13 +66,28 @@ Vagrantのためのフォルダは`$home`でいいだろう。
 vagrant plugin install vagrant-cachier
 ```
 
-Vagrantのためのフォルダに移動する。Windowsなら次のとおり。（`v`から始まるフォルダが他になければ，`cd \v`まで打てば，あとは`Tab`キーで補完できる。）
+（Macのみ）起動の前後でコマンドを実行するためのプラグインを導入する。
 
+```
+vagrant plugin install vagrant-triggers
+```
+
+Vagrantのためのフォルダに移動する。
+
+Windowsなら次のとおり。
 
 ```
 c:
 cd \vagrant
 ```
+
+Macなら次のとおり。
+
+```bash
+cd ~/vagrant
+```
+
+いずれのOSでも，`v`から始まるフォルダが他になければ，`cd \v`まで打てば，あとは`Tab`キーで補完できる。
 
 VagrantのBoxを用意する。
 
@@ -69,6 +96,8 @@ git clone https://github.com/taroyabuki/webbook2server.git
 ```
 
 #### 起動
+
+初期設定を行うため，一回目は時間がかかる。
 
 ```
 cd webbook2server
@@ -85,10 +114,16 @@ vagrant up
 
 #### 接続と切断
 
-ホストにいるときのプロンプトは`C:\vagrant\webbook2server>`。そこで`vagrant ssh`として，ゲストに接続する。
+Windowsでは，ホストにいるときのプロンプトは`C:\vagrant\webbook2server>`。そこで`vagrant ssh`として，ゲストに接続する。
 
 ```
 C:\vagrant\webbook2server>vagrant ssh
+```
+
+Macでは，ホストにいるときのプロンプトは`マシン名:vagrant ユーザ名$ `。そこで`vagrant ssh`として，ゲストに接続する。
+
+```
+マシン名:vagrant ユーザ名$ vagrant ssh
 ```
 
 ゲストにいるときのプロンプトは`vagrant@vagrant-ubuntu-trusty-32:~$ `。そこで`exit`として，切断する。

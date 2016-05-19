@@ -1,10 +1,8 @@
 # VagrantでWebアプリケーション構築入門
 
-矢吹太朗『Webアプリケーション構築入門』（森北出版, 第2版, 2011）のためのPHP開発環境をVagrantで用意する方法を紹介する。
+矢吹太朗『Webアプリケーション構築入門』（森北出版, 第2版, 2011）のための開発環境を**Vagrant**で構築する。
 
-参考：[書籍のサポートサイト](https://github.com/taroyabuki/webbook2)
-
-この書籍は，サーバ構築技術とアプリケーション構築技術を学べるものになっている。ここでは，書籍の方法を少し改良して，これらをなるべく別々に学ぶ方法を紹介する。
+この書籍は，サーバ構築技術とアプリケーション構築技術を学べるものになっている。ここでは，書籍の方法を少し改良して，これらをなるべく別々に学ぶ方法を紹介する。書籍どおりの方法を試したい場合は，[書籍のサポートサイト](https://github.com/taroyabuki/webbook2)の[Ubuntuでの環境構築のまとめ](https://github.com/taroyabuki/webbook2/blob/master/ubuntu.md)を参照してほしい。
 
 サーバ構築技術は，Vagrantで管理する仮想マシンのプロビジョニングによって学ぶ（Javaのサーバは例外で，ホスト側で動作する）。詳しくは，Vagrantの概要を別に学んだ後で，以下の第2章についてのメモと，`Vagrantfile`と`provisioning.sh`を読んでほしい。仮想マシンはUbuntu 14.04（32-bit）を使う。Ubuntu 16.04でないのは、2016年5月時点ではUbuntu 16.04の動作に不明な部分があるため，32-bit版を使うのは，多くの環境で使えるようにしたいためである。
 
@@ -16,7 +14,7 @@
 
 ![](https://raw.githubusercontent.com/taroyabuki/webbook2/master/update/system-textbook.png)
 
-ここで構築するシステムの構成図は次のようなものである。
+ここで構築するシステムは上を改良したもので，その構成図は次のようなものである。
 
 ![](https://raw.githubusercontent.com/taroyabuki/webbook2/master/update/system-vagrant.png)
 

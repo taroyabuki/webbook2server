@@ -62,7 +62,7 @@ homebrew cask install java virtualbox vagrant
 
 Vagrantのためのフォルダ`~/vagrant`を作る。（別の場所でもよいが，以下の説明はこれを前提にしている。）
 
-```
+```bash
 cd
 mkdir Vagrant
 ```
@@ -79,7 +79,7 @@ vagrant plugin install vagrant-cachier
 
 （Macのみ）起動の前後でコマンドを実行するためのプラグインを導入する。
 
-```
+```bash
 vagrant plugin install vagrant-triggers
 ```
 
@@ -223,7 +223,7 @@ NetBeansのプロジェクト`phpweb`内に`alert.html`を作り，ブラウザ�
 
 ホストとゲストのフォルダは同期しているから，ゲスト側で次のようにしてファイルを作ることもできる。
 
-```
+```bash
 cd /var/www/html/phpweb
 wget https://raw.githubusercontent.com/taroyabuki/webbook2/master/src/04/alert.html
 ```

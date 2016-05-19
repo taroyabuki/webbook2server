@@ -12,6 +12,19 @@
 
 ## 第2章
 
+書籍のシステムの構成図は次のようなものであった。
+
+![](https://raw.githubusercontent.com/taroyabuki/webbook2/master/update/system-textbook.png)
+
+ここで構築するシステムの構成図は次のようなものである。
+
+![](https://raw.githubusercontent.com/taroyabuki/webbook2/master/update/system-vagrant.png)
+
+この構成を使う利点は次のとおり。
+
+* GUIが必要なウェブブラウザとNetBeansはホスト側で動くため，仮想マシンにはGUIが不要になる。その結果，動作が全体的に軽くなる。
+* 仮想マシンの構築を完全に自動化できる。その結果，仮想マシンの作成や破棄が気軽にできるようになる。
+
 ### 2.2の代わり（その1）：Vagrantの準備
 
 #### Windows 10
@@ -242,6 +255,10 @@ Apache Commons Langのインストールは不要（上述のとおり`pom.xml`�
 MySQL Connector/Jのインストールは不要（上述のとおり`pom.xml`を修正していれば）
 
 参照：[サポートサイトの第8章部分](https://github.com/taroyabuki/webbook2/tree/master/src/08)
+
+データベースへのアクセス権は，データベースのサーバとクライアントが別々のマシンになることを考慮し，次のようにする。
+
+実際に，別のホストマシン等から仮想マシン内のデータベースにアクセスするためには，`my.cnf`において`bind-address`の値を`0.0.0.0`にしておく必要があるが，その設定は`provision.sh`内で済ませてある。
 
 ## 第9章
 

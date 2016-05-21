@@ -1,6 +1,9 @@
 #Timezone
 timedatectl set-timezone Asia/Tokyo
 
+#Java 8
+sudo add-apt-repository -y ppa:openjdk-r/ppa
+
 apt-get update
 
 #MySQL

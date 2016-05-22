@@ -44,7 +44,7 @@ Vagrantのためのフォルダ`c:\vagrant`を作る。（別の場所でもよ�
 ```
 c:
 cd \
-mkdir Vagrant
+mkdir vagrant
 ```
 
 #### Mac OS X
@@ -64,7 +64,7 @@ Vagrantのためのフォルダ`~/vagrant`を作る。（別の場所でもよ�
 
 ```bash
 cd
-mkdir Vagrant
+mkdir vagrant
 ```
 
 ### 2.2の代わり（その2）：仮想マシン

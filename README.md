@@ -50,12 +50,12 @@ mkdir vagrant
 #### Mac OS X
 
 1. 端末を起動する。
-1. Homebrewをインストールする。
-1. Homebrew Caskをインストールする。
+1. [Homebrew](http://brew.sh/index_ja.html)をインストールする。
+1. [Homebrew Cask](https://caskroom.github.io/)をインストールする。
 1. JDK，VirtualBox，Vagrantをインストールする。
 
 ```bash
-homebrew cask install java virtualbox vagrant
+brew cask install java virtualbox vagrant
 ```
 
 参考：[Homebrew CaskでVagrantの環境構築メモ](http://qiita.com/moomoo-ya/items/30f9ffdb7dd34caf9ec0)
@@ -77,38 +77,32 @@ mkdir vagrant
 vagrant plugin install vagrant-cachier
 ```
 
-（Macのみ）起動の前後でコマンドを実行するためのプラグインを導入する。
+**（Macのみ）**起動の前後でコマンドを実行するためのプラグインを導入する。
 
 ```bash
 vagrant plugin install vagrant-triggers
 ```
 
-Vagrantのためのフォルダに移動する。
+Vagrantのためのフォルダに移動し，VagrantのBoxを用意する。
 
 Windowsなら次のとおり。
 
 ```
 c:
 cd \vagrant
+git clone https://github.com/taroyabuki/webbook2server.git
 ```
 
 Macなら次のとおり。
 
 ```bash
 cd ~/vagrant
-```
-
-いずれのOSでも，`v`から始まるフォルダが他になければ，`cd \v`まで打てば，あとは`Tab`キーで補完できる。
-
-VagrantのBoxを用意する。
-
-```
 git clone https://github.com/taroyabuki/webbook2server.git
 ```
 
 #### 起動
 
-初期設定を行うため，一回目は時間がかかる。
+仮想マシンを起動する。（初期設定を行うため，一回目は時間がかかる。）
 
 ```
 cd webbook2server
@@ -151,12 +145,12 @@ vagrant@vagrant-ubuntu-trusty-32:~$ exit
 
 Apache HTTP Serverのドキュメントルートは以下のとおり。
 
-* ホスト側：Windowsなら`c:/vagrant/webbook2server/html`，Mac OS Xなら`$home/webbook2server/html`
+* ホスト側：Windowsなら`c:/vagrant/webbook2server/html`，Mac OS Xなら`~/webbook2server/html`
 * ゲスト側：`/var/www/html`
 
 この他に，次のフォルダもホストとゲストで共有している。
 
-* ホスト側：Windowsなら`c:/vagrant/webbook2server`，Mac OS Xなら`$home/webbook2server`
+* ホスト側：Windowsなら`c:/vagrant/webbook2server`，Mac OS Xなら`~/webbook2server`
 * ゲスト側：`/vagrant`
 
 PHPのエラーに関する`php.ini`の設定は変更済み。
@@ -169,7 +163,7 @@ PHPのエラーに関する`php.ini`の設定は変更済み。
 
 #### 統合開発環境（NetBeans）
 
-[https://netbeans.org/downloads/?pagelang=ja](https://netbeans.org/downloads/?pagelang=ja)から「PHP」または「すべて」をダウンロードし，インストールする。（JDKが必要）
+[https://netbeans.org/downloads/?pagelang=ja](https://netbeans.org/downloads/?pagelang=ja)から「PHP」または「すべて」をダウンロードし，インストールする。
 
 ### 2.5
 
@@ -201,7 +195,7 @@ Javaのプロジェクトは「Maven」の「Webアプリケーション」を�
 
 #### 2.5.2
 
-プロジェクトのソースフォルダは，Windowsなら`C:\vagrant\webbook2server\html\phpweb`，Mac OS Xなら`$home/webbook2server/html/phpweb`とする。
+プロジェクトのソースフォルダは，Windowsなら`C:\vagrant\webbook2server\html\phpweb`，Mac OS Xなら`~/webbook2server/html/phpweb`とする。
 
 ![](https://raw.githubusercontent.com/taroyabuki/webbook2/master/update/phpweb.png)
 
@@ -237,7 +231,7 @@ wget https://raw.githubusercontent.com/taroyabuki/webbook2/master/src/04/alert.h
 
 ## 第6章
 
-Apache Commons Langのインストールは不要（上述のとおり`pom.xml`を修正していれば）
+Apache Commons Langのインストールは不要（上述のとおり`pom.xml`を修正していれば）。
 
 参照：[サポートサイトの第6章部分](https://github.com/taroyabuki/webbook2/tree/master/src/06)
 

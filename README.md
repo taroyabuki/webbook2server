@@ -79,7 +79,7 @@ mkdir vagrant
 vagrant plugin install vagrant-cachier
 ```
 
-**（Macのみ）**起動の前後でコマンドを実行するためのプラグインを導入する。
+**（Macのみ）** 起動の前後でコマンドを実行するためのプラグインを導入する。
 
 ```bash
 vagrant plugin install vagrant-triggers
@@ -104,10 +104,16 @@ git clone https://github.com/taroyabuki/webbook2server.git
 
 #### 起動
 
-仮想マシンを起動する。（初期設定を行うため，一回目は時間がかかる。）
+仮想マシンのBOXを更新する。
 
 ```
 cd webbook2server
+vagrant box update
+```
+
+仮想マシンを起動する。（初期設定を行うため，一回目は時間がかかる。）
+
+```
 vagrant up
 ```
 
